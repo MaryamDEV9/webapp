@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تطبيق بنك الدم</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#b3122b;--deep:#3f0812;--paper:#fff7f5;--pink:#ffd3d3}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Cairo",Tahoma,Arial,sans-serif;background:var(--paper);color:var(--deep);line-height:1.8}
+.hero{position:relative;background:var(--red);color:#fff;padding:72px 20px 72px;overflow:hidden}
+.lang{position:absolute;top:16px;inset-inline-end:20px;background:transparent;color:#fff;border:2px solid #fff;border-radius:999px;padding:4px 18px;font:inherit;font-weight:600;cursor:pointer}
+.lang:hover{background:#fff;color:var(--red)}
+.lang:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.hero-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+h1{font-size:clamp(2.6rem,9vw,5rem);font-weight:900;line-height:1.1;margin:0 0 18px}
+.hero p{font-size:1.2rem;margin:0 0 28px;max-width:26em;color:var(--pink)}
+.btn{display:inline-block;background:#fff;color:var(--red);font-weight:900;font-size:1.2rem;text-decoration:none;padding:14px 34px;border-radius:999px}
+.btn:hover{background:var(--pink)}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.small{font-size:.9rem;color:var(--pink);margin-top:12px}
+.drop{width:100%;max-width:300px;margin:0 auto;display:block}
+.beat{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 2s .3s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.beat{animation:none;stroke-dashoffset:0}}
+section{max-width:960px;margin:0 auto;padding:56px 20px 0}
+h2{font-size:2rem;font-weight:900;margin:0 0 24px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{counter-increment:s;border-top:4px solid var(--red);padding-top:12px;font-weight:600}
+.steps li::before{content:counter(s);display:block;font-size:2.4rem;font-weight:900;color:var(--red);line-height:1}
+.types{display:flex;flex-wrap:wrap;gap:10px;direction:ltr;justify-content:flex-start}
+.types b{min-width:72px;text-align:center;padding:10px 0;border-radius:999px;background:var(--pink);font-size:1.3rem;font-weight:900}
+.why{font-size:1.15rem;max-width:36em}
+footer{max-width:960px;margin:56px auto 0;padding:24px 20px 40px;color:#8a5b62;font-size:.9rem}
+@media (max-width:700px){.hero-in{grid-template-columns:1fr}.drop{max-width:200px;order:-1}.steps{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <button class="lang" id="lang" type="button">English</button>
+  <div class="hero-in">
+    <div>
+      <h1 data-k="title"></h1>
+      <p data-k="lead"></p>
+      <!-- غيّري اسم الملف هنا لو اسم الـ APK مختلف / change the APK file name here if different -->
+      <a class="btn" href="bloodbank.apk" download data-k="btn"></a>
+      <div class="small" data-k="ver"></div>
+    </div>
+    <svg class="drop" viewBox="0 0 200 260" role="img" aria-hidden="true">
+      <path d="M100 8C100 8 22 100 22 166a78 78 0 0 0 156 0C178 100 100 8 100 8Z" fill="#fff"/>
+      <path class="beat" d="M40 168h38l12-34 20 66 16-48 10 16h24" fill="none" stroke="#b3122b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</header>
+
+<section>
+  <h2 data-k="h_steps"></h2>
+  <ol class="steps">
+    <li data-k="s1"></li><li data-k="s2"></li><li data-k="s3"></li><li data-k="s4"></li>
+  </ol>
+</section>
+
+<section>
+  <h2 data-k="h_types"></h2>
+  <div class="types"><b>A+</b><b>A-</b><b>B+</b><b>B-</b><b>AB+</b><b>AB-</b><b>O+</b><b>O-</b></div>
+</section>
+
+<section>
+  <h2 data-k="h_why"></h2>
+  <p class="why" data-k="why"></p>
+</section>
+
+<footer data-k="foot"></footer>
+
+<script>
+var T={
+ ar:{t:"تطبيق بنك الدم",title:"نقطة دم<br>تفرق مع حد",lead:"حمّل تطبيق بنك الدم وسجّل كمتبرع، أو دوّر على الفصيلة اللي محتاجها في دقايق.",btn:"تحميل التطبيق للأندرويد",ver:"الإصدار 1.0",h_steps:"ابدء في 4 خطوات",s1:"اضغط زر التحميل",s2:"افتح الملف من التنزيلات",s3:"فعّل \"السماح بالتثبيت من هذا المصدر\"",s4:"ثبّت التطبيق وسجّل بياناتك",h_types:"كل الفصائل محتاجة متبرعين",h_why:"ليه التطبيق ده؟",why:"علشان توصلي لمتبرع قريب منك بسرعة، وعلشان كل واحد يقدر يتبرع بسهولة من موبايله.",foot:"للتواصل والدعم: eyad.alaa.24012@gmail.com",sw:"English"},
+ en:{t:"Blood Bank App",title:"One drop<br>can change a life",lead:"Download the Blood Bank app, sign up as a donor, or find the blood type you need in minutes.",btn:"Download for Android",ver:"Version 1.0 (edit to match your file)",h_steps:"Get started in 4 steps",s1:"Tap the download button",s2:"Open the file from your Downloads",s3:"Turn on \"Allow install from this source\"",s4:"Install the app and sign up",h_types:"Every blood type needs donors",h_why:"Why this app?",why:"To help you reach a nearby donor quickly, and to let anyone donate easily from their phone. (Replace this sentence with a description of your real app.)",foot:"Contact and support: example@email.com",sw:"العربية"}
+};
+function setLang(l){
+  var d=T[l];
+  document.documentElement.lang=l;
+  document.documentElement.dir=l==="ar"?"rtl":"ltr";
+  document.title=d.t;
+  document.querySelectorAll("[data-k]").forEach(function(e){e.innerHTML=d[e.dataset.k]});
+  document.getElementById("lang").textContent=d.sw;
+  try{localStorage.setItem("lang",l)}catch(e){}
+}
+var cur="ar";
+try{cur=localStorage.getItem("lang")||"ar"}catch(e){}
+setLang(cur);
+document.getElementById("lang").onclick=function(){cur=cur==="ar"?"en":"ar";setLang(cur)};
+</script>
+</body>
+</html>
